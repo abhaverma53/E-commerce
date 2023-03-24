@@ -70,3 +70,18 @@ group :test do
   gem "selenium-webdriver"
   gem "webdrivers"
 end
+
+
+gem 'devise', '~> 4.9'
+
+gem 'wicked_pdf'
+
+gem 'wkhtmltopdf-binary'
+
+gem 'bootstrap'
+
+gem 'cssbundling-rails'
+
+gem 'avatar'
+
+gem 'kaminari'

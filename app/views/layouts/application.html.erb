@@ -9,7 +9,39 @@
     <%= javascript_importmap_tags %>
   </head>
   <body>
-    <%= render partial: "cart/cart" if @render_cart %>
+
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <div class="container-fluid">
+        <a href="#" class="navbar-brand">Brand</a>
+        <button type="button" class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarCollapse">
+            <div class="navbar-nav">
+                <a href="#" class="nav-item nav-link active">Home</a>
+                <a href="#" class="nav-item nav-link">Cart</a>
+                <a href="#" class="nav-item nav-link " tabindex="-1">Products</a>
+            </div>
+            <div class="navbar-nav ms-auto">
+              <% if user_signed_in? %>
+                    <li class="nav-item nav-link" ><%= link_to 'logout', destroy_user_session_path, method: :delete%></li>
+                    <%else%>
+                    <li class="nav-item nav-link "><%= link_to 'login', new_user_session_path %></li>
+                    <li class="nav-item nav-link"><%= link_to 'signup', new_user_registration_path %></li>
+              <%end%>
+            </div>
+        </div>
+    </div>
+</nav>
+
+
+    <p class="notice"><%= notice %></p>
+    <p class="alert"><%= alert %></p>
+
+
+    <% if user_signed_in? %>
+      <%= render partial: "cart/cart" if @render_cart %>
+    <%end%>
     <%= yield %>
   </body>
 </html>

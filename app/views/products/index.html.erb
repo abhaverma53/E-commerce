@@ -6,9 +6,17 @@
   <% @products.each do |product| %>
     <%= render product %>
     <p>
-      <%= link_to "Show this product", product %>
+      <% if user_signed_in? %>
+        <%= link_to "Show this product", product %>
+      <%end%>
     </p>
   <% end %>
 </div>
+<%= paginate @products %>
 
-<%= link_to "New product", new_product_path %>
+<% if user_signed_in? %>
+  <hr/>
+  <%= link_to "Cart", cart_path %>
+  <hr/>
+  <%= link_to "New product", new_product_path %>
+<%end%>
